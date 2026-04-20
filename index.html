@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard TI Brasil</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  </head>
+  <body>
+
+    <header>
+      <div>
+        <h1>Mercado de TI no Brasil</h1>
+        <p>Panorama de vagas, salários e skills — 2025</p>
+      </div>
+      <button id="btnTema" onclick="alternarTema()">🌙 Modo escuro</button>
+    </header>
+
+    <main>
+      <section id="filtros">
+        <button class="filtro ativo" data-area="all">Todas as áreas</button>
+        <button class="filtro" data-area="suporte">Suporte / N1-N2</button>
+        <button class="filtro" data-area="dev">Desenvolvimento</button>
+        <button class="filtro" data-area="dados">Dados / BI</button>
+        <button class="filtro" data-area="infra">Infraestrutura</button>
+        <button class="filtro" data-area="seguranca">Segurança</button>
+      </section>
+
+      <section id="metricas">
+        <div class="card">
+          <span class="label">Vagas abertas</span>
+          <span class="valor">18.400</span>
+        </div>
+        <div class="card">
+          <span class="label">Salário júnior</span>
+          <span class="valor">R$ 3.200</span>
+        </div>
+        <div class="card">
+          <span class="label">Salário sênior</span>
+          <span class="valor">R$ 12.500</span>
+        </div>
+        <div class="card">
+          <span class="label">Vagas remotas</span>
+          <span class="valor">61%</span>
+        </div>
+      </section>
+
+      <section id="grafico">
+        <h2>Salário médio por senioridade</h2>
+        <div class="graficos-row">
+          <div style="max-width: 500px; flex: 1;">
+            <canvas id="meuGrafico"></canvas>
+          </div>
+          <div style="max-width: 300px; flex: 1;">
+            <h2>Distribuição de vagas por área</h2>
+            <canvas id="graficoPizza"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>Skills mais pedidas</h2>
+        <input type="text" id="buscaSkill" placeholder="Buscar skill..." oninput="filtrarSkills()" />
+        <div id="lista-skills"></div>
+      </section>
+
+      <section id="cidades">
+        <h2>Cidades com mais vagas de TI</h2>
+        <div class="tabela-wrap">
+          <table id="tabelaCidades">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Cidade</th>
+                <th>Vagas</th>
+                <th>Salário médio</th>
+                <th>Remoto</th>
+              </tr>
+            </thead>
+            <tbody id="corpoTabela"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="grafico-ibge">
+        <h2>Rendimento médio do trabalhador brasileiro — IBGE</h2>
+        <p class="fonte">Fonte: IBGE · dados reais · atualizado automaticamente</p>
+        <div style="max-width: 700px;">
+          <canvas id="graficoIBGE"></canvas>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Dados ilustrativos baseados no mercado de TI brasileiro — 2025.</p>
+      <p>Desenvolvido por Lucio · HTML, CSS e JavaScript puro</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
